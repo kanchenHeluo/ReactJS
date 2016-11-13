@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>component props children demo</title>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js" ></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/browser.min.js"></script>
+</head>
+<body>
+	<div id='demo'></div>
+	<script type="text/babel">
+		var guestName = ['John','Mark'];
+		var HelloMsg = React.createClass({
+			render: function(){
+				return (<ol>{
+					React.Children.map(this.props.children, function(child){
+						return <li>{child}</li>; 
+					})
+				}</ol>);
+			}
+		});
+
+		ReactDOM.render(
+			<HelloMsg>{
+				guestName.map(function(name){
+					return <span>{name}</span>;
+				})
+			}
+			</HelloMsg>,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>
