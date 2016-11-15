@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>propTypes demo</title>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js" ></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/browser.min.js"></script>
+</head>
+<body>
+	<script type="text/babel">
+		var HelloMsg = React.createClass({
+			getDefaultProps: function(){
+				return {
+					title: 'John'
+				};
+			},
+			propTypes : {
+				title: React.PropTypes.string.isRequired,
+			},
+			render: function(){
+				return <h1>hello, {this.props.title}</h1>;
+			}
+		});
+		var t = 123;
+		ReactDOM.render(
+			<HelloMsg title={t}/>,
+			document.body
+		);
+	</script>
+</body>
+</html>
