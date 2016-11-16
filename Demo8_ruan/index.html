@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>state demo</title>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js" ></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/browser.min.js"></script>
+</head>
+<body>
+	<script type="text/babel">
+		var Shop = React.createClass({
+			getInitialState: function(){
+				return {shopStatus: 1};
+			},
+			handleClick: function(event){
+				this.setState({shopStatus : 1-this.state.shopStatus});
+			},
+			render: function(){
+				var text = this.state.shopStatus == 1 ? 'Open' : 'Close';
+				return (
+					<div>
+						<p>Current status: {text}</p>
+						<input type='button' onClick={this.handleClick} value='toggle shop status'/>
+					</div>
+				);
+			}
+		})
+		ReactDOM.render(<Shop />, document.body);
+	</script>
+</body>
+</html>
