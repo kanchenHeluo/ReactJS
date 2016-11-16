@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>form demo</title>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js" ></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/browser.min.js"></script>
+</head>
+<body>
+	<script type="text/babel">
+		var Shop = React.createClass({	
+			getInitialState: function(){
+				return {
+					value:null,
+					desc: 'none'
+				};
+			},	
+			handleChange: function(event){
+				this.setState({value : event.target.value});
+				this.setState({desc : event.target.value!='0' ? 'has value' : 'none'});
+			},
+			render: function(){
+				var value=this.state.value;
+				var desc=this.state.desc;
+				return (
+					<div>
+						<p>{desc}, value= {value}</p>
+						<input type='text' onChange={this.handleChange} value={value}/>
+					</div>
+				);
+			}
+		})
+		ReactDOM.render(<Shop />, document.body);
+	</script>
+</body>
+</html>
