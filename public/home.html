@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>component lifecycle demo</title>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js" ></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+	<script type="text/javascript" src="http://static.runoob.com/assets/react/browser.min.js"></script>
+</head>
+<body>
+	<script type="text/babel">
+		var Shop = React.createClass({	
+			getInitialState: function(){
+				return {
+					opacity: 1
+				};
+			},	
+			componentDidMount: function(){
+				setInterval(function(){
+					this.setState({opacity: this.state.opacity > 0.05 ? this.state.opacity - 0.05 : 0});
+				}.bind(this),500);
+			},
+			render: function(){
+				return (
+					<div style={{opacity: this.state.opacity}}>
+						Hello, {this.props.name}
+					</div>
+				);
+			}
+		})
+		ReactDOM.render(<Shop name='magic shop' />, document.body);
+	</script>
+</body>
+</html>
