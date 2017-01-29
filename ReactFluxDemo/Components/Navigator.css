@@ -1,0 +1,16 @@
+.onTab {
+	background-color: white;
+}
+.offTab{
+	background-color: gray;
+}
+.confirm{
+	color: yellow;
+}
+.disabledConfirm{
+	color: red;
+}
+:global(.testglobal){
+	color: green;
+	background-color: cyan;
+}

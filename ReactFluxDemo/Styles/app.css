@@ -1,0 +1,7 @@
+:global(.title){
+	color:blue;
+}
+:global(.testglobal){
+	color: green;
+	background-color: cyan;
+}
