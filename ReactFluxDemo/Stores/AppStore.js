@@ -1,36 +1,28 @@
-import AppDispatcher from '../Dispatcher/AppDispatcher';
 import events from 'events';
 import assign from 'object-assign'; 
 
-var CHANGE_EVENT = 'change';
+let CHANGE_EVENT = 'change';
 
 
 var AppStore = assign({}, events.EventEmitter.prototype, {
-	name : '',
-	updateName: function(n){
-		name = 'u_' + n;
+	items: [],
+	getAll(){
+		return this.items;
 	},
-	getName: function(){
-		return name; 
+	addNewItem(text){
+		this.items.push(text);
 	},
-	emitChange: function(){
+	emitChange(){
 		this.emit(CHANGE_EVENT);
 	},
-	addChangeListener: function(callback){
+	addChangeListener(callback){
 		this.on(CHANGE_EVENT, callback);
+	},
+	removeChangeListener(callback){
+		this.removeListener(CHANGE_EVENT, callback);
 	}
 
 });
-
-AppDispatcher.register(function(action){
-	switch(action.actionType){
-		case 'UPDATE':
-			AppStore.updateName(action.n.trim());
-			AppStore.emitChange();
-			break;
-	}
-
-})
 
 module.exports = AppStore;
 

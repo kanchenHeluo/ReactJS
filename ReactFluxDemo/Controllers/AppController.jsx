@@ -1,18 +1,41 @@
 import React from 'react';
+import App from '../Components/App.jsx';
+import AppActions from '../Actions/AppActions';
+import AppStore from '../Stores/AppStore';
 
-import Navigator from '../Components/Navigator.jsx';
+class AppController extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			items: []
+		}
+	}
 
-import styles from '../styles/app.css'
+	//Mounting LifeCycle
+	componentDidMount(){
+		AppStore.addChangeListener(this._onChange.bind(this));
+	}
 
-var AppController = React.createClass({
-	render: function(){
+	componentWillUnmount(){
+		AppStore.removeChangeListener(this._onChange.bind(this));
+	}
+
+	_onChange(){
+		this.setState({items: AppStore.getAll()});
+	}
+
+	createNewItem(e){
+		AppActions.addNewItem('new item');
+	}
+
+	render(){
 		return(
 			<div>
-				<h1 className='title'>This is Title</h1>
-				<Navigator />
+				<h1>This Is App Controller</h1>
+				<App onClick={this.createNewItem} data={this.state.items}/>
 			</div>
 			);
 	}
-});
+}
 
 module.exports = AppController;
