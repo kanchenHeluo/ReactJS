@@ -1,0 +1,24 @@
+{
+  "name": "pagination-demo",
+  "version": "1.0.0",
+  "description": "pagination component",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot"
+  },
+  "author": "kanchen",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^0.27.3",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "style-loader": "^0.14.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.6",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.22.0"
+  }
+}
