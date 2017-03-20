@@ -9,8 +9,7 @@ class Pagination extends React.Component {
     pageCount: 1,
     pageSize : 5,
     breakLabel: "...",
-    pageRangeDisplayed: 3,
-    disabledClassName: 'disabled'
+    pageRangeDisplayed: 3
   }
 
   constructor (props) {
@@ -93,9 +92,8 @@ class Pagination extends React.Component {
   }
   
   render(){
-
-    var previousClassName = this.state.currentPage == 1 ? this.props.disabledClassName : '';
-    var nextClassName = this.state.currentPage == this.props.pageCount ? this.props.disabledClassName : '';
+    var previousClassName = this.state.currentPage == 1 ? styles.disabled : '';
+    var nextClassName = this.state.currentPage == this.props.pageCount ? styles.disabled : '';
     return ( 
         <ul className={styles.pagination}>
           <li className={previousClassName}><a onClick={this.pageUp.bind(this)}>&laquo;</a></li>

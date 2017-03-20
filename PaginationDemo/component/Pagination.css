@@ -17,6 +17,13 @@
     display: inline;
 }
 
+.pagination>li.disabled{
+    color: #999;
+    background-color: #fff;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
 .pagination>li>a{
     position: relative;
     float: left;
@@ -26,14 +33,18 @@
     border: 1px solid #ddd;
 }
 
+.pagination>li>a:focus, .pagination>li>a:hover{
+    color: #23527c;
+    background-color:#eee;
+    border-bottom-color:#ddd;
+    cursor: pointer;
+}
+
 
 .pagination>li>a.active{
     background-color: #1890C0;
     color: #fff;
 }
 
-.pagination>li>a:focus, .pagination>li>a:hover{
-    color: #23527c;
-    background-color:#eee;
-    border-bottom-color:#ddd;
-}
+
+
