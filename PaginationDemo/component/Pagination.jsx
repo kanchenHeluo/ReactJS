@@ -2,20 +2,25 @@ import React from 'react'
 import styles from './Pagination.css'
 
 class Pagination extends React.Component {
-  //required validation
+  static propTypes = {
+    pageCount: React.PropTypes.number.isRequired,
+    pageSize: React.PropTypes.number.isRequired
+  };
 
-  //default value
   static defaultProps = {
+    currentPage: 1,
     pageCount: 1,
     pageSize : 5,
     breakLabel: "...",
-    pageRangeDisplayed: 3
-  }
+    pageRangeDisplayed: 3,    
+    activeClassName: 'active',
+    disabledClassName: 'disabled'
+  };
 
   constructor (props) {
     super(props);
     this.state = {
-      currentPage: 1
+      currentPage: props.currentPage
     }
   }
 
@@ -69,7 +74,7 @@ class Pagination extends React.Component {
     var leftRange, rightRange;
     if(this.state.currentPage - Math.ceil(this.props.pageRangeDisplayed/2) <= this.props.pageRangeDisplayed){
       var maxIdx = this.state.currentPage+1 > this.props.pageRangeDisplayed ? this.state.currentPage+1 : this.props.pageRangeDisplayed;
-      maxIdx = maxIdx > this.props.pageCount ? this.props.pageCount : maxIdx;
+      maxIdx = maxIdx >= this.props.pageCount-1 ? this.props.pageCount : maxIdx;
       leftBlock = arr.filter(a => a<=maxIdx).map((a,i) => { return <a key={i} className={this.getActiveClassName(a)} onClick={this.pageGo.bind(this)}>{a}</a>});
       if(this.props.pageCount > maxIdx){      
         rightRange = <a onClick={this.extendRightRange.bind(this)}>{this.props.breakLabel}</a>;
