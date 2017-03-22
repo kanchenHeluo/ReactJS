@@ -40,7 +40,7 @@ class Pagination extends React.Component {
   }
   
   pageGo(e){
-    var i = parseInt(e.target.innerText);    
+    let i = parseInt(e.target.innerText);    
     this.switchPage(i);
   }
 
@@ -65,15 +65,14 @@ class Pagination extends React.Component {
   }
 
   renderPages(){   
-    var arr = new Array();
-    for(var i=0; i<this.props.pageCount; i++){
+    let arr = new Array();
+    for(let i=0; i<this.props.pageCount; i++){
       arr[i] = i+1;
     }
 
-    var leftBlock, midBlock, rightBlock;
-    var leftRange, rightRange;
+    let leftBlock, midBlock, rightBlock, leftRange, rightRange;
     if(this.state.currentPage - Math.ceil(this.props.pageRangeDisplayed/2) <= this.props.pageRangeDisplayed){
-      var maxIdx = this.state.currentPage+1 > this.props.pageRangeDisplayed ? this.state.currentPage+1 : this.props.pageRangeDisplayed;
+      let maxIdx = this.state.currentPage+1 > this.props.pageRangeDisplayed ? this.state.currentPage+1 : this.props.pageRangeDisplayed;
       maxIdx = maxIdx >= this.props.pageCount-1 ? this.props.pageCount : maxIdx;
       leftBlock = arr.filter(a => a<=maxIdx).map((a,i) => { return <a key={i} className={this.getActiveClassName(a)} onClick={this.pageGo.bind(this)}>{a}</a>});
       if(this.props.pageCount > maxIdx){      
@@ -84,7 +83,7 @@ class Pagination extends React.Component {
       leftBlock = <a onClick={this.pageGo.bind(this)}>1</a>;
       leftRange = <a onClick={this.extendLeftRange.bind(this)}>{this.props.breakLabel}</a>;
 
-      var minIdx = this.state.currentPage-1 < this.props.pageCount - this.props.pageRangeDisplayed + 1 ? this.state.currentPage-1 : this.props.pageCount - this.props.pageRangeDisplayed + 1;
+      let minIdx = this.state.currentPage-1 < this.props.pageCount - this.props.pageRangeDisplayed + 1 ? this.state.currentPage-1 : this.props.pageCount - this.props.pageRangeDisplayed + 1;
       rightBlock = arr.filter(a => a>=minIdx).map((a,i) => { return <a key={i} className={this.getActiveClassName(a)} onClick={this.pageGo.bind(this)}>{a}</a>});
     }else{
       leftBlock = <a onClick={this.pageGo.bind(this)}>1</a>;
@@ -97,8 +96,8 @@ class Pagination extends React.Component {
   }
   
   render(){
-    var previousClassName = this.state.currentPage == 1 ? styles.disabled : '';
-    var nextClassName = this.state.currentPage == this.props.pageCount ? styles.disabled : '';
+    let previousClassName = this.state.currentPage == 1 ? styles.disabled : '';
+    let nextClassName = this.state.currentPage == this.props.pageCount ? styles.disabled : '';
     return ( 
         <ul className={styles.pagination}>
           <li className={previousClassName}><a onClick={this.pageUp.bind(this)}>&laquo;</a></li>
